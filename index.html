@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Votar Batalla</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+  <main>
+    <label class="Titulos">Nombres:</label><br>
+    <input id="inputNombres1" class="inputNombres">
+    <input id="inputNombres2" class="inputNombres">
+    <button onclick="cambiarNombres()" class="buttonnormal">Enviar names</button>
+    <br><br>
+
+
+    <label class="Titulos">NºCasillas:</label><br>
+    <input id="inputnumCasillas" class="inputnumCasillas">
+    <button onclick="agregarNuevaCasillaVotar()" class="buttonnormal">Generar Casillas</button><br><br>
+
+
+    <label id="labelMC1" class="labelMC">MC1:</label><br>
+    <div id="divCasillasVotar1" class="divCasillasVotar">
+    </div>
+    <input type="number" id="ResultadoCasilla1" class="ResultadoCasilla" readonly><br><br>
+
+    <label id="labelMC2" class="labelMC">MC2:</label><br>
+    <div id="divCasillasVotar2" class="divCasillasVotar">
+    </div>
+    <input type="number" id="ResultadoCasilla2" class="ResultadoCasilla" readonly><br><br>
+
+
+    <button id="buttonResultados" onclick="darResultados()" class="buttonnormal">Resultados</button>
+    <br><br>
+
+    <div class="divResultados">
+      <label id="resultados" class="resultados"></label>
+      <br><br>
+    </div>
+
+    <label class="Titulos">Online:</label><br>
+    <div>
+      <button id="buttonSubirResultados" onclick="SubirVotacion()" class="buttonnormal">Enviar puntuacion</button>
+      <input id="salaresultados" class="inputNombres">
+      <button id="buttonBorrarBaseDatos" onclick="BorrarBaseDatos()" class="buttonnormalRed">BorrarTabla</button>
+    </div>
+
+    <button id="buttonVerResultadosOnline" onclick="obtenerYMostrarPuntuaciones()" class="buttonnormal">Ver puntuaciones</button>
+
+    <div>
+      <label id="ResOnline1" class="labelMC"></label><br>
+      <label id="ResOnline2" class="labelMC"></label><br>
+      <label id="ResOnline3" class="labelMC"></label><br>
+    </div>
+    
+    <div>
+      <button id="butonVerSalas" onclick="obtenerNombresNodos()" class="buttonnormal">Ver lista de salas</button> <br>
+      <label id="salasDisponiblesAlIniciar" class="labelMC"></label>
+    </div>
+
+  </main>
+</body>
+
+<script src="script.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+<script>
+// Configura tu proyecto de Firebase
+const firebaseConfig = {
+    apiKey: "AIzaSyDYIdOGS1yRTAHPtNR3ggwBhFFMJtWHTqs",
+    authDomain: "votarbatallabase.firebaseapp.com",
+    databaseURL: "https://votarbatallabase-default-rtdb.firebaseio.com",
+    projectId: "votarbatallabase",
+    storageBucket: "votarbatallabase.appspot.com",
+    messagingSenderId: "374987296431",
+    appId: "1:374987296431:web:c3341eb0832d8c96310e5a",
+    measurementId: "G-HSM1Y8TRVB"
+};
+// Inicializa Firebase
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+
+borrarBaseDeDatos1Dia();
+
+</script>
+
+</html>
