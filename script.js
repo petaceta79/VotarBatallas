@@ -87,8 +87,6 @@ function darResultados(){
     var resultado = document.getElementById("resultados");
 
 
-
-
     if (ResultadosCas1.value < ResultadosCas2.value){
         resultado.textContent = "Gana " + nombre2.textContent + " con diferencia de " + (ResultadosCas2.value - ResultadosCas1.value);
     }
@@ -156,7 +154,7 @@ function obtenerYMostrarPuntuaciones() {
     var ref = firebase.database().ref(SalaResultados.value);
 
     // Obtiene los datos una vez
-    ref.once('value', function(snapshot) {
+    ref.on('value', function(snapshot) {
         var datos = snapshot.val();
         if (datos) {
             var nombre1 = datos.nombres[0];
@@ -216,8 +214,8 @@ function obtenerNombresNodos() {
     var ref = firebase.database().ref();
     var nombres = [];
 
-    ref.once('value')
-        .then(snapshot => {
+    ref.on('value', function(snapshot){
+            nombres = [];
             snapshot.forEach(childSnapshot => {
                 nombres.push(childSnapshot.key);
             });

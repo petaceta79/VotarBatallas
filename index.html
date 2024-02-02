@@ -11,15 +11,13 @@
 <body>
   <main>
     <label class="Titulos">Nombres:</label><br>
-    <input id="inputNombres1" class="inputNombres">
-    <input id="inputNombres2" class="inputNombres">
-    <button onclick="cambiarNombres()" class="buttonnormal">Enviar names</button>
+    <input id="inputNombres1" class="inputNombres" oninput="cambiarNombres()">
+    <input id="inputNombres2" class="inputNombres" oninput="cambiarNombres()">
     <br><br>
 
 
     <label class="Titulos">NºCasillas:</label><br>
-    <input id="inputnumCasillas" class="inputnumCasillas">
-    <button onclick="agregarNuevaCasillaVotar()" class="buttonnormal">Generar Casillas</button><br><br>
+    <input id="inputnumCasillas" class="inputnumCasillas" oninput="agregarNuevaCasillaVotar()"><br><br>
 
 
     <label id="labelMC1" class="labelMC">MC1:</label><br>
@@ -48,6 +46,7 @@
       <button id="buttonBorrarBaseDatos" onclick="BorrarBaseDatos()" class="buttonnormalRed">BorrarTabla</button>
     </div>
 
+    <br><br>
     <button id="buttonVerResultadosOnline" onclick="obtenerYMostrarPuntuaciones()" class="buttonnormal">Ver puntuaciones</button>
 
     <div>
@@ -56,10 +55,7 @@
       <label id="ResOnline3" class="labelMC"></label><br>
     </div>
     
-    <div>
-      <button id="butonVerSalas" onclick="obtenerNombresNodos()" class="buttonnormal">Ver lista de salas</button> <br>
-      <label id="salasDisponiblesAlIniciar" class="labelMC"></label>
-    </div>
+    <label id="salasDisponiblesAlIniciar" class="labelMC"></label>
 
   </main>
 </body>
@@ -85,6 +81,8 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
 borrarBaseDeDatos1Dia();
+
+obtenerNombresNodos();
 
 </script>
 
