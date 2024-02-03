@@ -80,24 +80,24 @@ function sumarCasillas(){
 }
 
 function darResultados(){
-    var ResultadosCas1 = document.getElementById("ResultadoCasilla1");
-    var ResultadosCas2 = document.getElementById("ResultadoCasilla2");
-    var nombre1 = document.getElementById("labelMC1");
-    var nombre2 = document.getElementById("labelMC2");
+    var ResultadosCas1 = parseFloat(document.getElementById("ResultadoCasilla1").value);
+    var ResultadosCas2 = parseFloat(document.getElementById("ResultadoCasilla2").value);
+    var nombre1 = document.getElementById("labelMC1").textContent;
+    var nombre2 = document.getElementById("labelMC2").textContent;
     var resultado = document.getElementById("resultados");
 
-
-    if (ResultadosCas1.value < ResultadosCas2.value){
-        resultado.textContent = "Gana " + nombre2.textContent + " con diferencia de " + (ResultadosCas2.value - ResultadosCas1.value);
-    }
-    if (ResultadosCas1.value > ResultadosCas2.value){
-        resultado.textContent = "Gana " + nombre1.textContent + " con diferencia de " + (ResultadosCas1.value - ResultadosCas2.value);
-    }
-    if (ResultadosCas1.value == ResultadosCas2.value){
+    if (ResultadosCas1 == ResultadosCas2){
         resultado.textContent = "Empate";
+    } else {
+        if (ResultadosCas1 > ResultadosCas2){
+            resultado.textContent = "Gana " + nombre1 + " con diferencia de " + (ResultadosCas1 - ResultadosCas2);
+        } else {
+            resultado.textContent = "Gana " + nombre2 + " con diferencia de " + (ResultadosCas2 - ResultadosCas1);
+        }
     }
-
 }
+
+
 
 function SubirVotacion() {
     var ResultadosCas1 = document.getElementById("ResultadoCasilla1");
@@ -116,27 +116,41 @@ function SubirVotacion() {
     // Obtiene los datos existentes
     ref.once('value', function(snapshot) {
         var datosExistente = snapshot.val();
-
+    
         // Verifica si hay datos existentes
         if (datosExistente) {
             // Suma las puntuaciones existentes con las nuevas
-            var nuevaPuntuacion1 = parseInt(datosExistente.puntuaciones[0]) + parseInt(ResultadosCas1.value);
-            var nuevaPuntuacion2 = parseInt(datosExistente.puntuaciones[1]) + parseInt(ResultadosCas2.value);
+            var nuevaPuntuacion1 = parseFloat(datosExistente.puntuaciones[0]) + parseFloat(ResultadosCas1.value);
+            var nuevaPuntuacion2 = parseFloat(datosExistente.puntuaciones[1]) + parseFloat(ResultadosCas2.value);
             
-            // Actualiza los datos con las nuevas puntuaciones
-            ref.update({
-                puntuaciones: [nuevaPuntuacion1, nuevaPuntuacion2]
-            });
+            // Verifica que las nuevas puntuaciones no sean NaN (Not a Number)
+            if (!isNaN(nuevaPuntuacion1) && !isNaN(nuevaPuntuacion2)) {
+                // Actualiza los datos con las nuevas puntuaciones
+                ref.update({
+                    puntuaciones: [nuevaPuntuacion1, nuevaPuntuacion2]
+                });
+            } else {
+                // Alerta si alguna de las nuevas puntuaciones es NaN
+                alert("Debe ingresar puntuaciones válidas antes de continuar.");
+            }
         } else {
             // Si no hay datos existentes, crea los nuevos datos
             var datos = {
                 nombres: [nombre1.textContent, nombre2.textContent],
-                puntuaciones: [parseInt(ResultadosCas1.value), parseInt(ResultadosCas2.value)],
+                puntuaciones: [parseFloat(ResultadosCas1.value), parseFloat(ResultadosCas2.value)],
                 fechaCreacion: new Date().getTime()
             };
-            ref.set(datos);
+            
+            // Verifica que las puntuaciones no sean NaN (Not a Number)
+            if (!isNaN(datos.puntuaciones[0]) && !isNaN(datos.puntuaciones[1])) {
+                ref.set(datos);
+            } else {
+                // Alerta si alguna de las puntuaciones es NaN
+                alert("Debe ingresar puntuaciones válidas antes de continuar.");
+            }
         }
     });
+    
 }
 
 function obtenerYMostrarPuntuaciones() {
@@ -165,13 +179,13 @@ function obtenerYMostrarPuntuaciones() {
             result1.textContent = nombre1 + ": " + puntuacion1;
             result2.textContent = nombre2 + ": " + puntuacion2;
 
-            if (puntuacion1.value < puntuacion2.value){
-                result3.textContent = "Gana " + nombre2.textContent + " con diferencia de " + (puntuacion2.value - puntuacion1.value);
+            if (puntuacion1 < puntuacion2){
+                result3.textContent = "Gana " + nombre2 + " con diferencia de " + (puntuacion2 - puntuacion1);
             }
-            if (puntuacion1.value > puntuacion2.value){
-                result3.textContent = "Gana " + nombre1.textContent + " con diferencia de " + (puntuacion1.value - puntuacion2.value);
+            if (puntuacion1 > puntuacion2){
+                result3.textContent = "Gana " + nombre1 + " con diferencia de " + (puntuacion1 - puntuacion2);
             }
-            if (puntuacion1.value == puntuacion2.value){
+            if (puntuacion1 == puntuacion2){
                 result3.textContent = "Empate";
             }
 
