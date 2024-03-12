@@ -17,7 +17,7 @@
 
 
     <label class="Titulos">NºCasillas:</label><br>
-    <input id="inputnumCasillas" class="inputnumCasillas" oninput="agregarNuevaCasillaVotar()"><br><br>
+    <input id="inputnumCasillas" class="inputnumCasillas" oninput="agregarNuevaCasillaVotar()" value="6"><br><br>
 
 
     <label id="labelMC1" class="labelMC">MC1:</label><br>
@@ -57,6 +57,25 @@
     <br>
     <label id="salasDisponiblesAlIniciar" class="labelMC"></label>
 
+    <div class="contenedor">
+      <div>
+        <button class="button-container" onclick="puntuarcas(0)">0</button>
+        <button class="button-container" onclick="puntuarcas(0.5)">0.5</button>
+      </div>
+      <div>
+        <button  class="button-container" onclick="puntuarcas(1)">1</button>
+        <button class="button-container" onclick="puntuarcas(1.5)">1.5</button>
+      </div>
+      <div>
+        <button class="button-container" onclick="puntuarcas(2)">2</button>
+        <button class="button-container" onclick="puntuarcas(2.5)">2.5</button>
+      </div>
+      <div>
+        <button class="button-container" onclick="puntuarcas(3)">3</button>
+        <button class="button-container" onclick="puntuarcas(3.5)">3.5</button>
+      </div>
+      <button class="button-container" onclick="puntuarcas(4)">4</button>
+    </div>
   </main>
 </body>
 
@@ -65,6 +84,9 @@
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 
 <script>
+// Funciones iniciales 
+agregarNuevaCasillaVotar();
+
 // Configura tu proyecto de Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyDYIdOGS1yRTAHPtNR3ggwBhFFMJtWHTqs",
@@ -85,5 +107,4 @@ borrarBaseDeDatos1Dia();
 obtenerNombresNodos();
 
 </script>
-
 </html>

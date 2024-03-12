@@ -1,5 +1,10 @@
+// variables
+var turno = -1;
+
 // script.ts
 function agregarNuevaCasillaVotar() {
+    turno = -1;
+
     var divCasillasVotar1 = document.getElementById("divCasillasVotar1");
     var divCasillasVotar2 = document.getElementById("divCasillasVotar2");
     var numDeCasillas = document.getElementById("inputnumCasillas");
@@ -16,7 +21,10 @@ function agregarNuevaCasillaVotar() {
         nuevaCasillaVotar.className = "inputCasilla";
         nuevaCasillaVotar.onchange = sumarCasillas;
         nuevaCasillaVotar.addEventListener("input", sumarCasillas);
-    
+        nuevaCasillaVotar.addEventListener("focus", function() {
+            cambiarTurnoA("1" + i);
+        });
+
         // Agrega el nuevo input al final del contenido actual de miDiv
         divCasillasVotar1.appendChild(nuevaCasillaVotar);
     }
@@ -29,7 +37,10 @@ function agregarNuevaCasillaVotar() {
         nuevaCasillaVotar.className = "inputCasilla";
         nuevaCasillaVotar.onchange = sumarCasillas;
         nuevaCasillaVotar.addEventListener("input", sumarCasillas);
-    
+        nuevaCasillaVotar.addEventListener("focus", function() {
+            cambiarTurnoA("2" + i);
+        });
+
         // Agrega el nuevo input al final del contenido actual de miDiv
         divCasillasVotar2.appendChild(nuevaCasillaVotar);
     }
@@ -51,6 +62,8 @@ function sumarCasillas(){
     var elementos2 = document.querySelectorAll('input[id="inputCasilla2"]');
     var ResultadosCas1 = document.getElementById("ResultadoCasilla1");
     var ResultadosCas2 = document.getElementById("ResultadoCasilla2");
+
+    console.log("llego");
 
     // Variable para almacenar la suma de los valores
     var suma1 = 0;
@@ -96,8 +109,6 @@ function darResultados(){
         }
     }
 }
-
-
 
 function SubirVotacion() {
     var ResultadosCas1 = document.getElementById("ResultadoCasilla1");
@@ -240,4 +251,49 @@ function obtenerNombresNodos() {
 function BorrarBaseDatos(){
     var database = firebase.database();
     database.ref().remove();
+}
+
+function cambiarTurnoA(NumCasilla){
+    turno = NumCasilla;
+    console.log(turno);
+
+}
+
+function puntuarcas(num) {
+    var elementos1 = document.querySelectorAll('input[id="inputCasilla1"]');
+    var elementos2 = document.querySelectorAll('input[id="inputCasilla2"]');
+
+    if(turno != -1){
+        if(parseInt(turno.toString().charAt(0)) == 1){
+            elementos1[parseInt(turno.toString().charAt(1))].value = num;
+
+            // Pasar a la siguiente casilla
+            if (turno<("2" + (elementos1.length-1))){
+                elementos2[parseInt(turno.toString().charAt(1))].focus();
+            }
+
+        }else{
+            elementos2[parseInt(turno.toString().charAt(1))].value = num;
+
+            // Pasar a la siguiente casilla
+            if (turno<("2" + (elementos1.length-1))){
+                elementos1[parseInt(turno.toString().charAt(1)) + 1].focus();
+            }
+        }
+
+        console.log(turno<("2" + (elementos1.length-1)));
+
+        if (turno<("2" + (elementos1.length-1))){
+            console.log(turno);
+        }
+    }
+    else{
+        if(turno == -1){
+            elementos1[0].value = num;
+            elementos2[0].focus();
+            
+        }
+    }
+
+    sumarCasillas();
 }
