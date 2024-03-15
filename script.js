@@ -19,6 +19,7 @@ function agregarNuevaCasillaVotar() {
         nuevaCasillaVotar.type = "number";
         nuevaCasillaVotar.id = "inputCasilla1";
         nuevaCasillaVotar.className = "inputCasilla";
+        nuevaCasillaVotar.readOnly = true;
         nuevaCasillaVotar.onchange = sumarCasillas;
         nuevaCasillaVotar.addEventListener("input", sumarCasillas);
         nuevaCasillaVotar.addEventListener("focus", function() {
@@ -35,6 +36,7 @@ function agregarNuevaCasillaVotar() {
         nuevaCasillaVotar.type = "number";
         nuevaCasillaVotar.id = "inputCasilla2";
         nuevaCasillaVotar.className = "inputCasilla";
+        nuevaCasillaVotar.readOnly = true;
         nuevaCasillaVotar.onchange = sumarCasillas;
         nuevaCasillaVotar.addEventListener("input", sumarCasillas);
         nuevaCasillaVotar.addEventListener("focus", function() {
