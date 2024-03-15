@@ -1,10 +1,35 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+html
+{
+    color: #ffffff;
+    border-color: green;
+  background:
+    linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+    linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+    linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+    linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+    linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+    linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+  background-color: #131313;
+  background-size: 20px 20px;
+}
+main
+{
+    background-repeat: no-repeat;
+    background-image: url('fondo.jpg');
+    background-position: center;
+    background-size: cover;
 
+}
 .inputCasilla {
     width: 3em; /* Ancho predeterminado para los inputs */
     height: 2em; /* Altura predeterminada para los inputs */
     margin-bottom: 0.5em; /* Margen inferior para separar los inputs */
     margin-left: 0.1em;
     border-color: #000000; /* Cambiar el color del borde */
+    border: solid;
 }
 
 .ResultadoCasilla {
@@ -12,6 +37,7 @@
     height: 2em; /* Altura predeterminada para los inputs */
     margin-bottom: 0.5em; /* Margen inferior para separar los inputs */
     border-color: #828a17; /* Cambiar el color del borde */
+    border: solid;
 }
 
 .inputNombres, .inputnumCasillas {
@@ -19,6 +45,7 @@
     height: 1.5em; /* Altura predeterminada para los inputs */
     margin-bottom: 0.5em; /* Margen inferior para separar los inputs */
     border-color: #000000; /* Cambiar el color del borde */
+    border: solid;
 }
 
 .buttonnormal {

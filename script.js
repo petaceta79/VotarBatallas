@@ -1,4 +1,5 @@
-// variables
+import 'tailwindcss/tailwind.css';
+
 var turno = -1;
 
 // script.ts
