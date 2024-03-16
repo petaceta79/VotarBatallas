@@ -3,7 +3,7 @@
 @import 'tailwindcss/utilities';
 html
 {
-    color: #ffffff;
+    color: #000000;
     border-color: green;
   background:
     linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
