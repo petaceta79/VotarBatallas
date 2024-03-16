@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="">
 
 <head>
   <meta charset="UTF-8">
@@ -11,8 +11,8 @@
 </head>
 
 <body class="flex justify-center w-screen h-[100%]">
-  <main class="w-3/5 max-sm:w-screen max-sm:bg-none h-[100%]">
-    <section>
+  <main class="w-3/5 max-sm:w-screen font-bold h-[100%] neon">
+    <section class="ml-5 mt-5">
       <label class="Titulos block">
         Nombres:<input id="inputNombres1" class="inputNombres" oninput="cambiarNombres()">    <input id="inputNombres2" class="inputNombres" oninput="cambiarNombres()">
       </label>
@@ -32,22 +32,22 @@
       <button id="buttonResultados" onclick="darResultados()" class="buttonnormal">Resultados</button>
 
 
-      <div class="divResultados">
-        <label id="resultados" class="resultados"></label>
+      <div class="divResultados w-[100%] h-[10vh] mt-6 flex justify-center  ">
+        <label id="resultados" class="resultados text w-[30vw] text-[150%] text-balance text-center flex"></label>
       </div>
       
      
     </section>
 
-    <section class="mt-8">
+    <section class="ml-5 mt-52">
         <label class="Titulos">Online:</label>
         <div class="mb-3">
-          <button id="buttonSubirResultados" onclick="SubirVotacion()" class="buttonnormal w-[160px]">Enviar puntuacion</button>
+          <button id="buttonSubirResultados" onclick="SubirVotacion()" class="buttonnormal text-[95%] w-[160px]">Enviar puntuacion</button>
           <input id="salaresultados" class="inputNombres">
           <button id="buttonBorrarBaseDatos" onclick="BorrarBaseDatos()" class="buttonnormalRed">BorrarTabla</button>
         </div>
 
-        <button id="buttonVerResultadosOnline" onclick="obtenerYMostrarPuntuaciones()" class="buttonnormal w-[160px]">Ver puntuaciones</button>
+        <button id="buttonVerResultadosOnline" onclick="obtenerYMostrarPuntuaciones()" class="buttonnormal text-[95%] w-[160px]">Ver puntuaciones</button>
 
         <div>
           <label id="ResOnline1" class="labelMC"></label>
@@ -60,24 +60,19 @@
 
 
     </section>
-    <footer class="contenedor bg-gray-500 text-cyan-200 flex fixed bottom-0 w-[60vw] h-[15vh]">
-      <div>
-        <button class="button-container" onclick="puntuarcas(0)">0</button>
-        <button class="button-container" onclick="puntuarcas(0.5)">0.5</button>
+    <footer class="block">
+      <div class="text-[4vh] max-sm:w-screen bg-black bg-opacity-50 cursor-pointer text-green-500 grid grid-cols-5 grid-rows-auto fixed bottom-0 w-[60vw] h-[15vh]">
+        <button class="hover:bg-black active:bg-black active:bg-opacity-30 hover:bg-opacity-50 transition-all" onclick="puntuarcas(0)">0</button>
+        <button class="hover:bg-black active:bg-black active:bg-opacity-30 hover:bg-opacity-50 transition-all" onclick="puntuarcas(1)">1</button>
+        <button class="hover:bg-black active:bg-black active:bg-opacity-30 hover:bg-opacity-50 transition-all" onclick="puntuarcas(2)">2</button>
+        <button class="hover:bg-black active:bg-black active:bg-opacity-30 hover:bg-opacity-50 transition-all" onclick="puntuarcas(3)">3</button>
+        <button class="hover:bg-black active:bg-black active:bg-opacity-30 hover:bg-opacity-50 transition-all" onclick="puntuarcas(4)">4</button>
+        <button class="hover:bg-black active:bg-black active:bg-opacity-30 hover:bg-opacity-50 transition-all" onclick="puntuarcas(0.5)">0.5</button>
+        <button class="hover:bg-black active:bg-black active:bg-opacity-30 hover:bg-opacity-50 transition-all" onclick="puntuarcas(1.5)">1.5</button>
+        <button class="hover:bg-black active:bg-black active:bg-opacity-30 hover:bg-opacity-50 transition-all" onclick="puntuarcas(2.5)">2.5</button>
+        <button class="hover:bg-black active:bg-black active:bg-opacity-30 hover:bg-opacity-50 transition-all" onclick="puntuarcas(3.5)">3.5</button>
+        <button class="hover:bg-black active:bg-black active:bg-opacity-30 hover:bg-opacity-50 transition-all" onclick="atras()">&lt;--</button>
       </div>
-      <div>
-        <button  class="button-container" onclick="puntuarcas(1)">1</button>
-        <button class="button-container" onclick="puntuarcas(1.5)">1.5</button>
-      </div>
-      <div>
-        <button class="button-container" onclick="puntuarcas(2)">2</button>
-        <button class="button-container" onclick="puntuarcas(2.5)">2.5</button>
-      </div>
-      <div>
-        <button class="button-container" onclick="puntuarcas(3)">3</button>
-        <button class="button-container" onclick="puntuarcas(3.5)">3.5</button>
-      </div>
-      <button class="button-container" onclick="puntuarcas(4)" value="4">4</button>
     </footer>
   </main>
 </body>

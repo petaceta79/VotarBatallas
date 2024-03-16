@@ -19,6 +19,7 @@ function agregarNuevaCasillaVotar() {
         nuevaCasillaVotar.type = "number";
         nuevaCasillaVotar.id = "inputCasilla1";
         nuevaCasillaVotar.className = "inputCasilla";
+        nuevaCasillaVotar.setAttribute("readonly", "readonly");
         nuevaCasillaVotar.onchange = sumarCasillas;
         nuevaCasillaVotar.addEventListener("input", sumarCasillas);
         nuevaCasillaVotar.addEventListener("focus", function() {
@@ -35,6 +36,7 @@ function agregarNuevaCasillaVotar() {
         nuevaCasillaVotar.type = "number";
         nuevaCasillaVotar.id = "inputCasilla2";
         nuevaCasillaVotar.className = "inputCasilla";
+        nuevaCasillaVotar.setAttribute("readonly", "readonly");
         nuevaCasillaVotar.onchange = sumarCasillas;
         nuevaCasillaVotar.addEventListener("input", sumarCasillas);
         nuevaCasillaVotar.addEventListener("focus", function() {
@@ -103,9 +105,9 @@ function darResultados(){
         resultado.textContent = "Empate";
     } else {
         if (ResultadosCas1 > ResultadosCas2){
-            resultado.textContent = "Gana " + nombre1 + " con diferencia de " + (ResultadosCas1 - ResultadosCas2);
+            resultado.textContent = "Gana " + nombre1 + " con diferencia de " + (isNaN(ResultadosCas1 - ResultadosCas2) ? "Neuronas porque no has puesto nada bobo": (ResultadosCas1 - ResultadosCas2));
         } else {
-            resultado.textContent = "Gana " + nombre2 + " con diferencia de " + (ResultadosCas2 - ResultadosCas1);
+            resultado.textContent = "Gana " + nombre2 + " con diferencia de " + (isNaN(ResultadosCas2 - ResultadosCas1) ? "Neuronas porque no has puesto nada bobo": (ResultadosCas2 - ResultadosCas1));
         }
     }
 }
@@ -266,34 +268,47 @@ function puntuarcas(num) {
     if(turno != -1){
         if(parseInt(turno.toString().charAt(0)) == 1){
             elementos1[parseInt(turno.toString().charAt(1))].value = num;
-
             // Pasar a la siguiente casilla
             if (turno<("2" + (elementos1.length-1))){
                 elementos2[parseInt(turno.toString().charAt(1))].focus();
             }
-
         }else{
             elementos2[parseInt(turno.toString().charAt(1))].value = num;
-
             // Pasar a la siguiente casilla
             if (turno<("2" + (elementos1.length-1))){
                 elementos1[parseInt(turno.toString().charAt(1)) + 1].focus();
             }
         }
-
         console.log(turno<("2" + (elementos1.length-1)));
-
         if (turno<("2" + (elementos1.length-1))){
             console.log(turno);
         }
     }
     else{
-        if(turno == -1){
-            elementos1[0].value = num;
-            elementos2[0].focus();
-            
-        }
+        elementos1[0].value = num;
+        elementos2[0].focus();   
     }
 
-    sumarCasillas();
+    sumarCasillas(); //para el resultado
+}
+function atras() {
+    var elementos1 = document.querySelectorAll('input[id="inputCasilla1"]');
+    var elementos2 = document.querySelectorAll('input[id="inputCasilla2"]');
+
+    if (turno != -1) {
+        if (parseInt(turno.toString().charAt(0)) == 1) {
+            elementos1[parseInt(turno.toString().charAt(1))].value = "";
+            if (turno < ("2" + (elementos1.length - 1))) {
+                elementos2[parseInt(turno.toString().charAt(1)) - 1].focus();
+            }
+        } else {
+            elementos2[parseInt(turno.toString().charAt(1))].value = "";
+            if (turno < ("2" + (elementos1.length - 1))) {
+                elementos1[parseInt(turno.toString().charAt(1))].focus();
+            }
+        }
+    } else {
+        elementos2[0].focus();
+    }
+    sumarCasillas(); //para el resultado
 }
