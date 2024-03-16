@@ -79,19 +79,7 @@ main
     font-weight: bold;
 }
 
-.contenedor {
-    position: fixed;
-    bottom: 0;
-    width: 85%;
-    height: 15%;
-    background-color: lightgray;
-    border: 1px solid black;
-    text-align: center;
-    display: flex;
-    justify-content: space-between;
-    left: 50%;
-    transform: translateX(-50%);
-}
+
 
 .contenedor > div {
     width: 100%; /* Ancho completo */
