@@ -1,10 +1,38 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+html
+{
+    height: 180vh;
+    overflow-x: hidden;
+    color: #000000;
+    border-color: green;
+  background:
+    linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+    linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+    linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+    linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+    linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+    linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+  background-color: #131313;
+  background-size: 20px 20px;
+}
+main
+{   
+    position: sticky;
+    background-repeat: no-repeat;
+    background-image: url('fondo.jpg');
+    background-position: center;
+    background-size: cover;
 
+}
 .inputCasilla {
     width: 3em; /* Ancho predeterminado para los inputs */
     height: 2em; /* Altura predeterminada para los inputs */
     margin-bottom: 0.5em; /* Margen inferior para separar los inputs */
     margin-left: 0.1em;
     border-color: #000000; /* Cambiar el color del borde */
+    border: solid;
 }
 
 .ResultadoCasilla {
@@ -12,6 +40,7 @@
     height: 2em; /* Altura predeterminada para los inputs */
     margin-bottom: 0.5em; /* Margen inferior para separar los inputs */
     border-color: #828a17; /* Cambiar el color del borde */
+    border: solid;
 }
 
 .inputNombres, .inputnumCasillas {
@@ -19,6 +48,7 @@
     height: 1.5em; /* Altura predeterminada para los inputs */
     margin-bottom: 0.5em; /* Margen inferior para separar los inputs */
     border-color: #000000; /* Cambiar el color del borde */
+    border: solid;
 }
 
 .buttonnormal {
@@ -52,24 +82,6 @@
     font-weight: bold;
 }
 
-.contenedor {
-    position: fixed;
-    bottom: 0;
-    width: 85%;
-    height: 23%;
-    background-color: lightgray;
-    border: 1px solid black;
-    text-align: center;
-    display: flex;
-    justify-content: space-between;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.contenedor > div {
-    width: 100%; /* Ancho completo */
-    height: 125%;
-}
 
 .button-container {
     width: 70%;
@@ -81,6 +93,32 @@
     height: 50%;
 }
 
-html {
-    height: 180vh;
+
+main::before {
+    content: "";
+    opacity: 0.13;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    background-size: cover;
+    background-position: center;
+    filter: blur(10px); 
+    z-index: -1; 
+  }
+.neon
+{
+ 
+    box-shadow: 0px 0px 50px rgb(255, 0, 0);
+    animation: shadowAnimation 2s infinite alternate ease-in-out;
 }
+@keyframes shadowAnimation {
+    0% {
+      box-shadow: 0px 0px 70px rgb(255, 0, 0);
+    }
+    100% {
+      box-shadow: 0px 0px 100px rgb(255, 0, 0);
+    }
+  }
